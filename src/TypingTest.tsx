@@ -304,12 +304,12 @@ export default function TypingTest() {
                 <p className="text-gray-400 text-sm mb-1">
                   Type the following:
                 </p>
-                <p
+                <div
                   className="bg-gray-800 p-2 rounded text-sm leading-snug"
                   aria-live="polite"
                 >
                   {renderTwoLines()}
-                </p>
+                </div>
               </div>
               <input
                 ref={inputRef}
@@ -321,10 +321,10 @@ export default function TypingTest() {
                 aria-label="Type the displayed text"
               />
               <div className="mb-3 text-xs text-gray-300 flex justify-between">
-                <p>
+                <span>
                   Words: {wordCount}/{words.length}
-                </p>
-                <p>Speed: {currentSpeed.toFixed(2)} WPM</p>
+                </span>
+                <span>Speed: {currentSpeed.toFixed(2)} WPM</span>
               </div>
             </>
           )}
@@ -342,14 +342,14 @@ export default function TypingTest() {
                       className={`mb-2 pb-2 border-b border-gray-700 last:border-b-0 ${index === 0 ? 'bg-blue-900 p-2 rounded' : ''}`}
                     >
                       {index === 0 && (
-                        <p className="text-xs text-blue-300 mb-1">
+                        <div className="text-xs text-blue-300 mb-1">
                           Latest Result
-                        </p>
+                        </div>
                       )}
-                      <p>Date: {formatDate(result.date)}</p>
-                      <p>Speed: {result.speed.toFixed(2)} WPM</p>
-                      <p>Accuracy: {result.accuracy.toFixed(2)}%</p>
-                      <p>Mistakes: {result.mistakes}</p>
+                      <div>Date: {formatDate(result.date)}</div>
+                      <div>Speed: {result.speed.toFixed(2)} WPM</div>
+                      <div>Accuracy: {result.accuracy.toFixed(2)}%</div>
+                      <div>Mistakes: {result.mistakes}</div>
                     </div>
                   ))}
                 </div>
