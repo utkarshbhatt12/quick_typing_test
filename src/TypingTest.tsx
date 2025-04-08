@@ -1,33 +1,21 @@
-import React, { useState, useEffect, useRef } from 'react';
 import {
-  calculateTypingSpeed,
+  CategoryScale,
+  Chart as ChartJS,
+  Legend,
+  LinearScale,
+  LineElement,
+  PointElement,
+  Title,
+  Tooltip,
+} from 'chart.js';
+import { Cloud, History, Keyboard, RefreshCw, X } from 'lucide-react';
+import React, { useEffect, useRef, useState } from 'react';
+import { Line } from 'react-chartjs-2';
+import {
   calculateAccuracy,
+  calculateTypingSpeed,
   getSampleText,
 } from './utils';
-import { Keyboard, RefreshCw, X, Cloud, History } from 'lucide-react';
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend,
-} from 'chart.js';
-import { Line } from 'react-chartjs-2';
-
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend,
-);
-
-const sampleText = getSampleText();
 
 interface TestResults {
   speed: number;
@@ -59,6 +47,21 @@ export default function TypingTest() {
   >([]);
   const [showHistory, setShowHistory] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
+  const [sampleText, setSampleText] = useState<string>('');
+
+  useEffect(() => {
+    ChartJS.register(
+      CategoryScale,
+      LinearScale,
+      PointElement,
+      LineElement,
+      Title,
+      Tooltip,
+      Legend,
+    );
+
+    setSampleText(getSampleText());
+  }, []);
 
   const words = sampleText.split(' ');
 
@@ -294,8 +297,9 @@ export default function TypingTest() {
     <div className="w-[480px] h-[600px] bg-gray-900 text-white shadow-lg overflow-hidden flex flex-col">
       <header className="bg-black py-3 px-4 flex items-center justify-center">
         <Keyboard className="w-6 h-6 text-white mr-2" />
-        <h1 className="text-xl font-bold">quick_typing_test</h1>
+        <h1 className="text-xl font-bold">Quick Typing Test</h1>
       </header>
+
       <main className="flex-grow flex flex-col p-4 overflow-hidden">
         <div className="flex-grow overflow-y-auto">
           {!isFinished && !showHistory && (
