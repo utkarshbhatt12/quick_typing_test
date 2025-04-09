@@ -1,8 +1,7 @@
 {
   "name": "quick_typing_test",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "A typing test that runs in the browser popup.",
-  "main": "dist/index.js",
   "type": "module",
   "scripts": {
     "prebuild": "rimraf dist && node scripts/prebuild.js",
@@ -14,7 +13,7 @@
   "author": "Utkarsh Bhatt",
   "dependencies": {
     "chart.js": "^4.4.4",
-    "lucide-react": "^0.441.0",
+    "lucide-react": "^0.487.0",
     "react": "^18.3.1",
     "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.3.1"
