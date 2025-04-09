@@ -6,6 +6,10 @@ import pluginReact from 'eslint-plugin-react';
 import json from '@eslint/json';
 import markdown from '@eslint/markdown';
 import css from '@eslint/css';
+import { createRequire } from 'module';
+
+const require = createRequire(import.meta.url);
+const { dependencies } = require('./package.json');
 
 export default defineConfig([
   {
@@ -23,7 +27,7 @@ export default defineConfig([
     ...pluginReact.configs.flat.recommended,
     settings: {
       react: {
-        version: 'detect',
+        version: dependencies.react,
       },
       rules: {
         'react/react-in-jsx-scope': 'off',
